@@ -1,0 +1,70 @@
+{
+  "name": "electron-app-example",
+  "productName": "electron-app-example",
+  "version": "0.3.32",
+  "description": "My Electron app about update and publish example",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "npx electron-forge start",
+    "package": "npx electron-forge package",
+    "make": "npx electron-forge make",
+    "publish": "npx electron-forge publish",
+    "lint": "echo \"No linting configured\""
+  },
+  "keywords": [],
+  "author": {
+    "name": "Chau Giang",
+    "email": "giangc@acm.org"
+  },
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "setupExe": "myapp-setup.exe"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip"
+        }
+      ],
+      "publishers": [
+        {
+          "name": "@electron-forge/publisher-github",
+          "config": {
+            "repository": {
+              "owner": "bugb",
+              "name": "electron-update-and-publish-example"
+            },
+            "draft": false
+          }
+        }
+      ]
+    }
+  },
+  "build": {
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "bugb",
+        "repo": "electron-update-and-publish-example"
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-is-dev": "^0.3.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "fs-extra": "^10.0.0",
+    "update-electron-app": "^2.0.1"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.61",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.61",
+    "@electron-forge/maker-zip": "^6.0.0-beta.61",
+    "@electron-forge/publisher-github": "^6.0.0-beta.61",
+    "electron": "15.1.2"
+  }
+}
